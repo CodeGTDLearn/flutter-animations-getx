@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_getx/controller/controller.dart';
 
-class ApplyAnimationButton extends StatelessWidget {
-  const ApplyAnimationButton({
+class ApplyAnimatedContainerAnimationButton extends StatelessWidget {
+  const ApplyAnimatedContainerAnimationButton({
     Key? key,
     required Controller controller,
   })  : _controller = controller,
@@ -13,7 +13,7 @@ class ApplyAnimationButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      onPressed: _controller.applyAnimation,
+      onPressed: _controller.applyAnimatedContainerAnimation,
       tooltip: 'Apply Animation',
       child: const Icon(Icons.add),
     );
