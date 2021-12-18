@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_getx/controller/controller.dart';
-import 'package:flutter_animations_getx/core/animation_button.dart';
+import 'package:flutter_animations_getx/view/animations/anim_icon_button.dart';
 import 'package:flutter_animations_getx/core/custom_dialog.dart';
 import 'package:get/get.dart';
 
@@ -36,7 +36,7 @@ class AnimPosition extends StatelessWidget {
           ),
         ),
         SizedBox(height: 30),
-        AnimationButton(_controller.triggerPositionAnimation),
+        AnimatedIconButton(function: _controller.triggerPositionAnimation),
       ],
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_getx/controller/controller.dart';
-import 'package:flutter_animations_getx/core/animation_button.dart';
+import 'package:flutter_animations_getx/view/animations/anim_icon_button.dart';
 import 'package:flutter_animations_getx/core/custom_dialog.dart';
 import 'package:get/get.dart';
 
@@ -38,7 +38,7 @@ class AnimContainerTransf extends StatelessWidget {
               )),
         ),
         SizedBox(height: 30),
-        AnimationButton(_controller.triggerAnimContainerTransformationAnimation),
+        AnimatedIconButton(function: _controller.triggerAnimContainerTransformationAnimation),
       ],
     );
   }

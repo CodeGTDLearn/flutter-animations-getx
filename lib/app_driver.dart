@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'view/overview_tabs.dart';
+import 'view/overview.dart';
 
 void main() => runApp(const AppDriver());
 
@@ -12,7 +12,7 @@ class AppDriver extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo Animations',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: OverviewTabs(title: 'Flutter Demo Animations'),
+      home: Overview(title: 'Flutter Demo Animations'),
     );
   }
 }
