@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_getx/core/custom_tab_bar.dart';
-import 'package:flutter_animations_getx/view/animations/controller_animated_builder/controller_bounce.dart';
-import 'package:flutter_animations_getx/view/animations/controller_animated_builder/controller_multiple.dart';
-import 'package:flutter_animations_getx/view/animations/controller_animated_builder/controller_resize.dart';
 
-import 'controller_fade.dart';
-import 'controller_flip.dart';
-import 'controller_size.dart';
-import 'controller_slide.dart';
+import 'stateful_controller/controller_bounce.dart';
+import 'stateful_controller/controller_fade.dart';
+import 'stateful_controller/controller_flip.dart';
+import 'stateful_controller/controller_multiple.dart';
+import 'stateful_controller/controller_resize.dart';
+import 'stateful_controller/controller_size.dart';
+import 'stateful_controller/controller_slide.dart';
 
-class ControllerTabAnimations extends StatelessWidget {
+
+
+class StatefulAnimations extends StatelessWidget {
   final String title = "";
 
-  ControllerTabAnimations({required title});
+  StatefulAnimations({required title});
 
   @override
   Widget build(BuildContext context) {

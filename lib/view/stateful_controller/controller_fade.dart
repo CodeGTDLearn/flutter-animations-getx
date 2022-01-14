@@ -1,26 +1,26 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_animations_getx/view/animations/anim_icon_button.dart';
 
-class ControllerFlip extends StatefulWidget {
+import 'anim_icon_button.dart';
+
+class ControllerFade extends StatefulWidget {
   String title = "";
 
-  ControllerFlip({required this.title});
+  ControllerFade({required this.title});
 
   @override
-  _ControllerFlipState createState() => _ControllerFlipState();
+  _ControllerFadeState createState() => _ControllerFadeState();
 }
 
-class _ControllerFlipState extends State<ControllerFlip>
+class _ControllerFadeState extends State<ControllerFade>
     with SingleTickerProviderStateMixin {
+
+
   // ===> STEP 1) DEFINE
   // 1.A) "AnimationController" (controller): Define the animation duration
   // 1.B) "Animation" (animation): Define the animation type/style
   late AnimationController _controller;
   late Animation _animation;
-  late AnimationStatus _animationStatus = AnimationStatus.dismissed;
 
   // ===> STEP 2) INITIALIZATION:
   // 2.A) Starting the "AnimationController"
@@ -31,20 +31,18 @@ class _ControllerFlipState extends State<ControllerFlip>
     _controller =
         AnimationController(vsync: this, duration: Duration(milliseconds: 1200));
 
-    _animation = Tween<double>(end: 1.0, begin: 0.0).animate(_controller);
+    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeIn);
 
     // ===> STEP 3) LISTENER-ANIMATION:
-    // 3.A) monitoring the Animation-Status
+    // 3.A) monitoring the Animation-Status(Animation Reversing)
     // 3.B) Call SetState, whenever SetState is updated:
     // 3.B.1) This listener "monitor" the animation, and when it changes, executes the the Animation-Status
     // method in side "AddListener"
-    _animation
-      ..addStatusListener((status) {
-        _animationStatus = status;
-      })
-      ..addListener(() {
-        setState(() {});
-      });
+    _controller.addStatusListener((AnimationStatus status) {
+      if (status == AnimationStatus.completed) {
+        _controller.reverse();
+      }
+    });
   }
 
   // ===> STEP 4) DISPOSING:
@@ -55,18 +53,14 @@ class _ControllerFlipState extends State<ControllerFlip>
     _controller.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Center(
         // ===> STEP 5):
         // 5.A) Add AnimationWidget to be managed by 'Animation'
-        child: Transform(
-          alignment: FractionalOffset.center,
-          transform: Matrix4.identity()
-            ..setEntry(3, 2, 0.002)
-            ..rotateX(pi * (_animation.value)),
+        child: FadeTransition(
+          opacity: _animation as Animation<double>,
           child: Container(
               width: 250,
               height: 250,
@@ -81,9 +75,7 @@ class _ControllerFlipState extends State<ControllerFlip>
 
       // ===> STEP 6):
       // 6.A) Play/enable animation, using 'AnimationController'
-      AnimatedIconButton(function: () => _controller.isCompleted ? _controller.reverse() : _controller.forward())
+      AnimatedIconButton(function: () => _controller.forward())
     ]);
   }
-
-
 }

@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_animations_getx/view/animations/anim_icon_button.dart';
 
-class ControllerBounce extends StatefulWidget {
+import 'anim_icon_button.dart';
+
+class ControllerSlide extends StatefulWidget {
   final String title = "";
 
-  ControllerBounce({required title});
+  ControllerSlide({required title});
 
   @override
-  _ControllerBounceState createState() => _ControllerBounceState();
+  _ControllerSlideState createState() => _ControllerSlideState();
 }
 
-class _ControllerBounceState extends State<ControllerBounce>
+class _ControllerSlideState extends State<ControllerSlide>
     with SingleTickerProviderStateMixin {
   // ===> STEP 1) DEFINE
   // 1.A) "AnimationController" (controller): Define the animation duration
@@ -19,7 +20,7 @@ class _ControllerBounceState extends State<ControllerBounce>
   late AnimationController _controller;
   late Animation _animation;
 
-  // ===> STEP 2) INITIALIZATION:
+  // ===> STEP 2) INITIALIZATION_animation = Tween -> Between (from BEGIN to END)
   // 2.A) Starting the "AnimationController"
   // 2.B) Starting the "Animation"
   @override
@@ -28,9 +29,12 @@ class _ControllerBounceState extends State<ControllerBounce>
     _controller =
         AnimationController(vsync: this, duration: Duration(milliseconds: 2000));
 
-    _animation = Tween(begin: 200.0, end: 120.0).animate(CurvedAnimation(
+    _animation = Tween<Offset>(
+      begin: Offset.zero,
+      end: const Offset(1.5, 0.0),
+    ).animate(CurvedAnimation(
       parent: _controller,
-      curve: Interval(0.0, 1.0, curve: Curves.elasticIn),
+      curve: Curves.elasticIn,
     ));
 
     // ===> STEP 3) LISTENER-ANIMATION:
@@ -59,17 +63,11 @@ class _ControllerBounceState extends State<ControllerBounce>
       Center(
           // ===> STEP 5):
           // 5.A) Add AnimationWidget to be managed by 'Animation'
-          // STEP 01) animation:
-          // - When this Animation changes
-          // - it will "redraw" the "builder widget"
-          // STEP 02) builder Widget:
-          // - Widget that will be rebuilt, WHEN animation is triggered/changed
-          child: AnimatedBuilder(
-        animation: _animation,
-        builder: (ctx, ch) => Container(
-            width: 100,
-            height: 100,
-            margin: EdgeInsets.only(top: _animation.value, left: 125),
+          child: SlideTransition(
+        position: _animation as Animation<Offset>,
+        child: Container(
+            width: 250,
+            height: 250,
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.red, width: 2),
                 image: const DecorationImage(

@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_animations_getx/view/animations/anim_icon_button.dart';
 
-class ControllerFade extends StatefulWidget {
-  String title = "";
+import 'anim_icon_button.dart';
 
-  ControllerFade({required this.title});
+class ControllerBounce extends StatefulWidget {
+  final String title = "";
+
+  ControllerBounce({required title});
 
   @override
-  _ControllerFadeState createState() => _ControllerFadeState();
+  _ControllerBounceState createState() => _ControllerBounceState();
 }
 
-class _ControllerFadeState extends State<ControllerFade>
+class _ControllerBounceState extends State<ControllerBounce>
     with SingleTickerProviderStateMixin {
-
-
   // ===> STEP 1) DEFINE
   // 1.A) "AnimationController" (controller): Define the animation duration
   // 1.B) "Animation" (animation): Define the animation type/style
@@ -28,18 +27,21 @@ class _ControllerFadeState extends State<ControllerFade>
   void initState() {
     super.initState();
     _controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 1200));
+        AnimationController(vsync: this, duration: Duration(milliseconds: 2000));
 
-    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeIn);
+    _animation = Tween(begin: 200.0, end: 120.0).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Interval(0.0, 1.0, curve: Curves.elasticIn),
+    ));
 
     // ===> STEP 3) LISTENER-ANIMATION:
-    // 3.A) monitoring the Animation-Status(Animation Reversing)
+    // 3.A) monitoring the Animation-Status
     // 3.B) Call SetState, whenever SetState is updated:
     // 3.B.1) This listener "monitor" the animation, and when it changes, executes the the Animation-Status
     // method in side "AddListener"
     _controller.addStatusListener((AnimationStatus status) {
       if (status == AnimationStatus.completed) {
-        _controller.reverse();
+        _controller.repeat(reverse: true);
       }
     });
   }
@@ -56,19 +58,24 @@ class _ControllerFadeState extends State<ControllerFade>
   Widget build(BuildContext context) {
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Center(
-        // ===> STEP 5):
-        // 5.A) Add AnimationWidget to be managed by 'Animation'
-        child: FadeTransition(
-          opacity: _animation as Animation<double>,
-          child: Container(
-              width: 250,
-              height: 250,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.red, width: 2),
-                  image: const DecorationImage(
-                      image: AssetImage('assets/images/balloon.png')))),
-        ),
-      ),
+          // ===> STEP 5):
+          // 5.A) Add AnimationWidget to be managed by 'Animation'
+          // STEP 01) animation:
+          // - When this Animation changes
+          // - it will "redraw" the "builder widget"
+          // STEP 02) builder Widget:
+          // - Widget that will be rebuilt, WHEN animation is triggered/changed
+          child: AnimatedBuilder(
+        animation: _animation,
+        builder: (ctx, ch) => Container(
+            width: 100,
+            height: 100,
+            margin: EdgeInsets.only(top: _animation.value, left: 125),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.red, width: 2),
+                image: const DecorationImage(
+                    image: AssetImage('assets/images/balloon.png')))),
+      )),
 
       SizedBox(height: 30),
 

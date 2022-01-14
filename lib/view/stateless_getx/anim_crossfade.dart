@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_getx/controller/controller.dart';
-import 'package:flutter_animations_getx/view/animations/anim_icon_button.dart';
+import 'package:flutter_animations_getx/view/stateful_controller/anim_icon_button.dart';
 import 'package:get/get.dart';
 
 class AnimCrossfade extends StatelessWidget {

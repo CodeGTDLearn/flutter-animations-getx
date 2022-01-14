@@ -2,6 +2,7 @@ import 'package:get/state_manager.dart';
 
 class Controller {
   var animContainerHeightObs = 70.0.obs;
+  var animContainerShadowObs = 0.0.obs;
   var animPositionTopObs = 0.0.obs;
   var animPositionLeftObs = 0.0.obs;
   var animContainerTransformationObs = false.obs;
@@ -10,6 +11,10 @@ class Controller {
 
   void triggerAnimContainerHeightAnimation() {
     animContainerHeightObs.value = animContainerHeightObs.value == 70.0 ? 50.0 : 70.0;
+  }
+
+  void triggerAnimContainerShadowAnimation() {
+    animContainerShadowObs.value = animContainerShadowObs.value == 70.0 ? 0.0 : 40.0;
   }
 
   void triggerAnimContainerTransformationAnimation() {
