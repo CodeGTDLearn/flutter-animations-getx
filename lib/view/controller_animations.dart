@@ -10,11 +10,10 @@ import 'stateful_controller/controller_size.dart';
 import 'stateful_controller/controller_slide.dart';
 
 
-
-class StatefulAnimations extends StatelessWidget {
+class ControllerAnimations extends StatelessWidget {
   final String title = "";
 
-  StatefulAnimations({required title});
+  ControllerAnimations({required title});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class StatefulAnimations extends StatelessWidget {
     var _controlerBounce = 'Bounce';
     var _controlerFlip = 'Flip';
     var _controlerSize = 'Size';
-    var _title = 'No Buint-In/Controller Animations:';
+    var _title = 'Controller Animations:';
 
     return CustomTabBar(
       title: _title,

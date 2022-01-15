@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animations_getx/controller/controller.dart';
+import 'package:flutter_animations_getx/view/stateless_getx/controller_getx.dart';
 import 'package:flutter_animations_getx/view/stateful_controller/anim_icon_button.dart';
 import 'package:get/get.dart';
 
-class AnimContainerShadow extends StatelessWidget {
-  final _controller = Get.put(Controller());
+class AnimContainerShadow1 extends StatelessWidget {
+  final _controller = Get.put(ControllerGetx());
 
   final String title;
 
-  AnimContainerShadow({required this.title});
+  AnimContainerShadow1({required this.title});
 
-// starting
-//   var _myValue = 0.0;
-
-// ending
-//   final _myNewValue = 40.0;
 
   @override
   Widget build(BuildContext context) {
@@ -28,23 +23,25 @@ class AnimContainerShadow extends StatelessWidget {
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black,
-                    offset: Offset(_controller.animContainerShadowObs.value,
-                        _controller.animContainerShadowObs.value),
-                    blurRadius: _controller.animContainerShadowObs.value,
-                    spreadRadius: _controller.animContainerShadowObs.value,
+                    // offset: Offset(
+                    //   _controller.animContainerShadowObs.value,
+                    //   _controller.animContainerShadowObs.value,
+                    // ),
+                    blurRadius: _controller.animatedContainerShadow1Obs.value,
+                    // spreadRadius: _controller.animContainerShadowObs.value,
                   )
                 ],
               ),
               alignment: Alignment.center,
               // onEnd: () => CustomDialog.create(context),
               width: 300,
-              curve: Curves.bounceInOut,
+              curve: Curves.easeInOut,
               height: _controller.animContainerHeightObs.value,
               child: Container(width: 200, height: 200),
             )),
         SizedBox(height: 30),
         AnimatedIconButton(function: () {
-          _controller.triggerAnimContainerShadowAnimation();
+          _controller.triggerAnimContainerShadow1Animation();
         }),
       ],
     );

@@ -1,8 +1,9 @@
 import 'package:get/state_manager.dart';
 
-class Controller {
+class ControllerGetx {
   var animContainerHeightObs = 70.0.obs;
-  var animContainerShadowObs = 0.0.obs;
+  var animatedContainerShadow1Obs = 0.0.obs;
+  var physicalModelShadow2Obs = 0.0.obs;
   var animPositionTopObs = 0.0.obs;
   var animPositionLeftObs = 0.0.obs;
   var animContainerTransformationObs = false.obs;
@@ -13,8 +14,12 @@ class Controller {
     animContainerHeightObs.value = animContainerHeightObs.value == 70.0 ? 50.0 : 70.0;
   }
 
-  void triggerAnimContainerShadowAnimation() {
-    animContainerShadowObs.value = animContainerShadowObs.value == 70.0 ? 0.0 : 40.0;
+  void triggerAnimContainerShadow1Animation() {
+    animatedContainerShadow1Obs.value = animatedContainerShadow1Obs.value == 0.0 ? 10.0 : 0.0;
+  }
+  void triggerPhysicalModelShadow2Animation() {
+    physicalModelShadow2Obs.value =
+    physicalModelShadow2Obs.value == 0.0 ? 25.0 : 0.0;
   }
 
   void triggerAnimContainerTransformationAnimation() {
