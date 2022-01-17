@@ -16,24 +16,39 @@ class AnimContainerShadow2 extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Obx(() => AnimatedPhysicalModel(
-            color: Colors.white,
-            elevation: _controller.physicalModelShadow2Obs.value,
-            shadowColor: Colors.red,
-            borderRadius:
-                BorderRadius.circular(_controller.physicalModelShadow2Obs.value),
-            duration: Duration(milliseconds: 2000),
+            color: _controller.physicalModelColorObs.value,
+            elevation: _controller.physicalModelElevationObs.value,
+            shadowColor: _controller.physicalModelColorObs.value,
             shape: BoxShape.rectangle,
-            child: Container(
-                height: 200,
-                width: 200,
-                child: const Center(
-                  child: Text("PhysicalModel", style: TextStyle(fontSize: 50)),
-                )))),
+            duration: const Duration(milliseconds: 1500),
+            // animateColor: true,
+            // animateShadowColor: true,
+            // onEnd: () => print("endou"),
+            // borderRadius:
+            //     BorderRadius.circular(_controller.physicalModelElevationObs.value),
+            child: GestureDetector(
+              onTap: () => _trigger.call(),
+              child: Container(
+                width: 100,
+                height: 100,
+                child: Center(
+                  child: Text(
+                    _controller.physicalModelTextObs.value,
+                    style: const TextStyle(fontSize: 30),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ))),
         const SizedBox(height: 30),
-        AnimatedIconButton(function: () {
-          _controller.triggerPhysicalModelShadow2Animation();
-        }),
+        AnimatedIconButton(function: _trigger),
       ],
     );
+  }
+
+  _trigger() async {
+    _controller.triggerPhysicalModelAnimations().whenComplete(() => _controller
+        .physicalModelElevationObs
+        .value = _controller.physicalModelElevationObs.value == 25.0 ? 0.0 : 25.0);
   }
 }

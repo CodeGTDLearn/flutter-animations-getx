@@ -7,6 +7,7 @@ import 'stateless_getx/anim_container_shadow1.dart';
 import 'stateless_getx/anim_container_shadow2.dart';
 import 'stateless_getx/anim_container_transf.dart';
 import 'stateless_getx/anim_crossfade.dart';
+import 'stateless_getx/anim_neumorphic.dart';
 import 'stateless_getx/anim_opacity.dart';
 import 'stateless_getx/anim_position.dart';
 
@@ -26,7 +27,7 @@ class BuiltInAnimations extends StatelessWidget {
     var _crossfade = 'Crossfade';
     var _opacity = 'Opacity';
     var _position = 'Position';
-    var _expanad= 'Expand';
+    var _neuf= 'Neumorphic';
     var _title = 'BuiltIn Animations:';
 
     return CustomTabBar(
@@ -40,6 +41,7 @@ class BuiltInAnimations extends StatelessWidget {
         AnimOpacity(title: _opacity),
         AnimContainerTransf(title: _contTransf),
         AnimPosition(title: _position),
+        AnimNeumorphic(title: _neuf),
       ],
       listTabBar: [
         Tab(icon: const Icon(Icons.add_moderator), text: _controllers),
@@ -50,6 +52,7 @@ class BuiltInAnimations extends StatelessWidget {
         Tab(icon: const Icon(Icons.access_alarm_outlined), text: _opacity),
         Tab(icon: const Icon(Icons.accessibility_new), text: _contTransf),
         Tab(icon: const Icon(Icons.threed_rotation), text: _position),
+        Tab(icon: const Icon(Icons.info), text: _neuf),
       ],
     );
   }

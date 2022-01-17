@@ -26,3 +26,7 @@
   - ControllerMultiple: Tween(double) + Interval + _controller.isCompleted
     - Complete Explanation of AnimatedBuilder
   - ControllerResize: Tween(Size) + addStatusListener.repeat
+
+
++ 3.3 AnimationController + GetX
+  - source: https://stackoverflow.com/questions/67628795/how-to-use-animationcontroller-in-getx-instead-of-using-statefulwidget-and-singl

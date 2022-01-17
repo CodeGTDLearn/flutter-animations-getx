@@ -54,18 +54,17 @@ class _ControllerSizeState extends State<ControllerSize>
   Widget build(BuildContext context) {
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Center(
-        // ===> STEP 5):
-        // 5.A) Add AnimationWidget to be managed by 'Animation'
-        child: Container(
-            width: _animation.value.width,
-            height: _animation.value.height,
-            constraints: BoxConstraints(
-                minHeight: _animation.value.height, minWidth: _animation.value.width),
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.red, width: 2),
-                image: const DecorationImage(
-                    image: AssetImage('assets/images/balloon.png')))),
-      ),
+          // ===> STEP 5):
+          // 5.A) Add AnimationWidget to be managed by 'Animation'
+          child: Container(
+              width: _animation.value.width,
+              height: _animation.value.height,
+              constraints: BoxConstraints(
+                  minHeight: _animation.value.height, minWidth: _animation.value.width),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.red, width: 2),
+                  image: const DecorationImage(
+                      image: AssetImage('assets/images/balloon.png'))))),
 
       SizedBox(height: 30),
 
