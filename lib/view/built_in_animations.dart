@@ -12,7 +12,6 @@ import 'stateless_getx/anim_opacity.dart';
 import 'stateless_getx/anim_position.dart';
 
 class BuiltInAnimations extends StatelessWidget {
-
   String title = "";
 
   BuiltInAnimations({required this.title});
@@ -27,7 +26,7 @@ class BuiltInAnimations extends StatelessWidget {
     var _crossfade = 'Crossfade';
     var _opacity = 'Opacity';
     var _position = 'Position';
-    var _neuf= 'Neumorphic';
+    var _neuf = 'Neumorphic';
     var _title = 'BuiltIn Animations:';
 
     return CustomTabBar(

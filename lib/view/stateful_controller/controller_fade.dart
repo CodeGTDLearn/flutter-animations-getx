@@ -55,27 +55,29 @@ class _ControllerFadeState extends State<ControllerFade>
 
   @override
   Widget build(BuildContext context) {
-    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-      Center(
-        // ===> STEP 5):
-        // 5.A) Add AnimationWidget to be managed by 'Animation'
-        child: FadeTransition(
-          opacity: _animation as Animation<double>,
-          child: Container(
-              width: 250,
-              height: 250,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.red, width: 2),
-                  image: const DecorationImage(
-                      image: AssetImage('assets/images/balloon.png')))),
+    return SingleChildScrollView(
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Center(
+          // ===> STEP 5):
+          // 5.A) Add AnimationWidget to be managed by 'Animation'
+          child: FadeTransition(
+            opacity: _animation as Animation<double>,
+            child: Container(
+                width: 250,
+                height: 250,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.red, width: 2),
+                    image: const DecorationImage(
+                        image: AssetImage('assets/images/balloon.png')))),
+          ),
         ),
-      ),
 
-      SizedBox(height: 30),
+        SizedBox(height: 30),
 
-      // ===> STEP 6):
-      // 6.A) Play/enable animation, using 'AnimationController'
-      AnimatedIconButton(function: () => _controller.forward())
-    ]);
+        // ===> STEP 6):
+        // 6.A) Play/enable animation, using 'AnimationController'
+        AnimatedIconButton(function: () => _controller.forward())
+      ]),
+    );
   }
 }
