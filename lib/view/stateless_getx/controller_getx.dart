@@ -19,10 +19,14 @@ class ControllerGetx extends GetxController {
   var physicalModelTextObs = "offline".obs;
   var physicalModelColorObs = Colors.red.obs;
 
-  var neum_depth = 0.0.obs;
-  var neum_width = 60.0.obs;
-  var neum_height = 60.0.obs;
-  var neum_isActive = false.obs;
+  var neumorphic_1_depth = 0.0.obs;
+  var neumorphic_1_width = 60.0.obs;
+  var neumorphic_1_height = 60.0.obs;
+  var neumorphic_1_isActive = false.obs;
+
+  var neumorphicLightIsElevatedObs = true.obs;
+  var neumorphicDarkIsElevatedObs = true.obs;
+  var neumorphicColorIsElevatedObs = true.obs;
 
   @override
   void onInit() {
@@ -30,9 +34,9 @@ class ControllerGetx extends GetxController {
     physicalModelTextObs = "offline".obs;
     physicalModelColorObs = Colors.red.obs;
 
-    neum_width.value = 60.0;
-    neum_height.value = 60.0;
-    neum_isActive.value = false;
+    neumorphic_1_width.value = 60.0;
+    neumorphic_1_height.value = 60.0;
+    neumorphic_1_isActive.value = false;
     super.onInit();
   }
 
@@ -48,10 +52,10 @@ class ControllerGetx extends GetxController {
     // animContainerHeightTextObs.value == 20.0 ? 10.0 : 20.0;
 
     animatedContainerTextObs.value =
-    animatedContainerTextObs.value == "offline" ? "online" : "offline";
+        animatedContainerTextObs.value == "offline" ? "online" : "offline";
 
     animatedContainerColorObs.value =
-    animatedContainerColorObs.value == Colors.red ? Colors.green : Colors.red;
+        animatedContainerColorObs.value == Colors.red ? Colors.green : Colors.red;
 
     animContainerScaleObs.value = !animContainerScaleObs.value;
 
@@ -63,10 +67,10 @@ class ControllerGetx extends GetxController {
         physicalModelElevationObs.value == 10.0 ? 0.0 : 10.0;
 
     physicalModelTextObs.value =
-    physicalModelTextObs.value == "offline" ? "online" : "offline";
+        physicalModelTextObs.value == "offline" ? "online" : "offline";
 
     physicalModelColorObs.value =
-    physicalModelColorObs.value == Colors.red ? Colors.green : Colors.red;
+        physicalModelColorObs.value == Colors.red ? Colors.green : Colors.red;
 
     return Future.delayed(const Duration(milliseconds: 1000));
   }
@@ -86,5 +90,29 @@ class ControllerGetx extends GetxController {
   void triggerPositionAnimation() {
     animPositionTopObs.value = animPositionTopObs.value == 0.0 ? -150.0 : 0.0;
     animPositionLeftObs.value = animPositionLeftObs.value == 0.0 ? 50.0 : 0.0;
+  }
+
+  void triggerLightNeumorphicAnimation({required bool fullCycle}) async {
+    neumorphicLightIsElevatedObs.value = !neumorphicLightIsElevatedObs.value;
+    if (fullCycle){
+      await Future.delayed(Duration(milliseconds: 500));
+      neumorphicLightIsElevatedObs.value = !neumorphicLightIsElevatedObs.value;
+    }
+  }
+
+  void triggerDarktNeumorphicAnimation({required bool fullCycle}) async {
+    neumorphicDarkIsElevatedObs.value = !neumorphicDarkIsElevatedObs.value;
+    if (fullCycle){
+      await Future.delayed(Duration(milliseconds: 500));
+      neumorphicDarkIsElevatedObs.value = !neumorphicDarkIsElevatedObs.value;
+    }
+  }
+
+  void triggerColortNeumorphicAnimation({required bool fullCycle}) async {
+    neumorphicColorIsElevatedObs.value = !neumorphicColorIsElevatedObs.value;
+    if (fullCycle){
+      await Future.delayed(Duration(milliseconds: 500));
+      neumorphicColorIsElevatedObs.value = !neumorphicColorIsElevatedObs.value;
+    }
   }
 }

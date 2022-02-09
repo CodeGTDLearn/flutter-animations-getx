@@ -5,11 +5,11 @@ import 'package:get/state_manager.dart';
 
 import 'controller_getx.dart';
 
-class AnimNeumorphic extends StatelessWidget {
+class AnimLightNeumorphicPackage extends StatelessWidget {
   final _controller = Get.put(ControllerGetx());
   final String? title;
 
-  AnimNeumorphic({required this.title});
+  AnimLightNeumorphicPackage({required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -27,18 +27,18 @@ class AnimNeumorphic extends StatelessWidget {
               ),
               const SizedBox(height: 32),
               AnimatedNeumorphicContainer(
-                depth: _controller.neum_depth.value,
-                width: _controller.neum_width.value,
-                height: _controller.neum_height.value,
+                depth: _controller.neumorphic_1_depth.value,
+                width: _controller.neumorphic_1_width.value,
+                height: _controller.neumorphic_1_height.value,
                 color: Colors.red,
                 child: const Icon(Icons.timeline),
               ),
               const SizedBox(height: 16),
               Slider(
-                value: _controller.neum_depth.value,
+                value: _controller.neumorphic_1_depth.value,
                 min: 0.0,
                 max: 1.0,
-                onChanged: (v) => _controller.neum_depth.value = v,
+                onChanged: (v) => _controller.neumorphic_1_depth.value = v,
               ),
             ],
           ))),
@@ -54,10 +54,10 @@ class AnimNeumorphic extends StatelessWidget {
     // int milliseconds = 500,
   }) {
     return GestureDetector(
-      onTap: () => _controller.neum_isActive.value = !_controller.neum_isActive.value,
+      onTap: () => _controller.neumorphic_1_isActive.value = !_controller.neumorphic_1_isActive.value,
       child: AnimatedNeumorphicContainer(
         duration: Duration(milliseconds: 500),
-        depth: _controller.neum_isActive.value ? 0.0 : 1.0,
+        depth: _controller.neumorphic_1_isActive.value ? 0.0 : 1.0,
         color: color,
         width: width,
         height: height,
