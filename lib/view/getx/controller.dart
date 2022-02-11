@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 
-class ControllerGetx extends GetxController {
+class Controller extends GetxController {
   var animPositionTopObs = 0.0.obs;
   var animPositionLeftObs = 0.0.obs;
   var animContainerTransformationObs = false.obs;
@@ -23,10 +23,6 @@ class ControllerGetx extends GetxController {
   var neumorphic_1_width = 60.0.obs;
   var neumorphic_1_height = 60.0.obs;
   var neumorphic_1_isActive = false.obs;
-
-  var neumorphicLightIsElevatedObs = true.obs;
-  var neumorphicDarkIsElevatedObs = true.obs;
-  var neumorphicColorIsElevatedObs = true.obs;
 
   var glassIsBlueObs = true.obs;
 
@@ -94,30 +90,6 @@ class ControllerGetx extends GetxController {
     animPositionLeftObs.value = animPositionLeftObs.value == 0.0 ? 50.0 : 0.0;
   }
 
-  void triggerLightNeumorphicAnimation({required bool fullCycle}) async {
-    neumorphicLightIsElevatedObs.value = !neumorphicLightIsElevatedObs.value;
-    if (fullCycle){
-      await Future.delayed(Duration(milliseconds: 500));
-      neumorphicLightIsElevatedObs.value = !neumorphicLightIsElevatedObs.value;
-    }
-  }
-
-  void triggerDarktNeumorphicAnimation({required bool fullCycle}) async {
-    neumorphicDarkIsElevatedObs.value = !neumorphicDarkIsElevatedObs.value;
-    if (fullCycle){
-      await Future.delayed(Duration(milliseconds: 500));
-      neumorphicDarkIsElevatedObs.value = !neumorphicDarkIsElevatedObs.value;
-    }
-  }
-
-  void triggerColorNeumorphicAnimation({required bool fullCycle}) async {
-    neumorphicColorIsElevatedObs.value = !neumorphicColorIsElevatedObs.value;
-    if (fullCycle){
-      await Future.delayed(Duration(milliseconds: 500));
-      neumorphicColorIsElevatedObs.value = !neumorphicColorIsElevatedObs.value;
-    }
-  }
-
   void triggerGlassIsBlurAnimation({required bool fullCycle}) async {
     glassIsBlueObs.value = !glassIsBlueObs.value;
     if (fullCycle){
@@ -125,4 +97,5 @@ class ControllerGetx extends GetxController {
       glassIsBlueObs.value = !glassIsBlueObs.value;
     }
   }
+
 }

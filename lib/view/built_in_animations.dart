@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_getx/core/custom_tab_bar.dart';
+import 'package:flutter_animations_getx/view/getx/anim_container.dart';
+import 'package:flutter_animations_getx/view/getx/neumorphic/anim_color_neumorphic.dart';
 
 import 'controller_animations.dart';
-import 'stateless_getx/anim_color_neumorphic.dart';
-import 'stateless_getx/anim_color_grad_neumorphic.dart';
-import 'stateless_getx/anim_container.dart';
-import 'stateless_getx/anim_container_shadow1.dart';
-import 'stateless_getx/anim_container_shadow2.dart';
-import 'stateless_getx/anim_container_transf.dart';
-import 'stateless_getx/anim_crossfade.dart';
-import 'stateless_getx/anim_dark_neumorphic.dart';
-import 'stateless_getx/anim_glass.dart';
-import 'stateless_getx/anim_light_neumorphic_package.dart';
-import 'stateless_getx/anim_light_neumorphic.dart';
-import 'stateless_getx/anim_opacity.dart';
-import 'stateless_getx/anim_position.dart';
+import 'getx/anim_container_transf.dart';
+import 'getx/anim_crossfade.dart';
+import 'getx/anim_glass.dart';
+import 'getx/anim_opacity.dart';
+import 'getx/anim_position.dart';
+import 'getx/neumorphic/anim_color_grad_neumorphic.dart';
+import 'getx/neumorphic/anim_dark_neumorphic.dart';
+import 'getx/neumorphic/anim_light_neumorphic.dart';
+import 'getx/neumorphic/anim_light_neumorphic_package.dart';
+import 'getx/shadows/anim_container_shadow1.dart';
+import 'getx/shadows/anim_container_shadow2.dart';
+
 
 class BuiltInAnimations extends StatelessWidget {
   String title = "";

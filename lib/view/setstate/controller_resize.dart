@@ -29,8 +29,12 @@ class _ControllerResizeState extends State<ControllerResize>
     _controller =
         AnimationController(vsync: this, duration: Duration(milliseconds: 1200));
 
-    _animation = Tween<Size>(begin: Size(100, 100), end: Size(120, 120))
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.bounceIn));
+    _animation = Tween<Size>(
+      begin: Size(100, 100),
+      end: Size(120, 120),
+    ).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.bounceIn),
+    );
 
     // ===> STEP 3) LISTENER-ANIMATION:
     // 3.A) monitoring the Animation-Status

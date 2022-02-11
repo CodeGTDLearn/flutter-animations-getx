@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_getx/core/custom_tab_bar.dart';
 
-import 'stateful_controller/controller_bounce.dart';
-import 'stateful_controller/controller_fade.dart';
-import 'stateful_controller/controller_flip.dart';
-import 'stateful_controller/controller_multiple.dart';
-import 'stateful_controller/controller_resize.dart';
-import 'stateful_controller/controller_size.dart';
-import 'stateful_controller/controller_slide.dart';
+import 'setstate/controller_bounce.dart';
+import 'setstate/controller_fade.dart';
+import 'setstate/controller_flip.dart';
+import 'setstate/controller_multiple.dart';
+import 'setstate/controller_resize.dart';
+import 'setstate/controller_size.dart';
+import 'setstate/controller_slide.dart';
 
 
 class ControllerAnimations extends StatelessWidget {

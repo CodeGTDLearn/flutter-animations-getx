@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animations_getx/view/getx/neumorphic/controller_neuph.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/state_manager.dart';
 
-import 'controller_getx.dart';
-
-class AnimColorNeumorphic extends StatelessWidget {
-  final _controller = Get.put(ControllerGetx());
+class AnimColorGradNeumorphic extends StatelessWidget {
   final String? title;
 
-  AnimColorNeumorphic({required this.title});
+  AnimColorGradNeumorphic({required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -22,27 +20,22 @@ class AnimColorNeumorphic extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(title!)),
       backgroundColor: backgroundColor,
-      body: Center(child: Obx(
-        () {
-          return _lightNeuphormicButton(
-            controller: _controller,
-            milliseconds: 200,
-            height: 200,
-            width: 200,
-            downButtonShadowColor: notElevatedShadowColor2,
-            upButtonShadowColor: elevatedShadowColor,
-            buttonAndBackgroundColor: backgroundColor!,
-            iconSize: iconSize,
-            iconButton: iconButton,
-            iconcolor: iconColor,
-          );
-        },
+      body: Center(
+          child: button(
+        milliseconds: 200,
+        height: 200,
+        width: 200,
+        downButtonShadowColor: notElevatedShadowColor2,
+        upButtonShadowColor: elevatedShadowColor,
+        buttonAndBackgroundColor: backgroundColor!,
+        iconSize: iconSize,
+        iconButton: iconButton,
+        iconcolor: iconColor,
       )),
     );
   }
 
-  GestureDetector _lightNeuphormicButton({
-    required ControllerGetx controller,
+  GestureDetector button({
     required int milliseconds,
     required double height,
     required double width,
@@ -51,24 +44,43 @@ class AnimColorNeumorphic extends StatelessWidget {
     required Color buttonAndBackgroundColor,
     required IconData iconButton,
     required double iconSize,
-    required Color iconcolor,
+    Color iconcolor = Colors.black,
+    Function? onTap,
   }) {
+    Get.create(() => ControllerNeuph());
+    final _controller = Get.find<ControllerNeuph>();
+
     return GestureDetector(
-      onTap: () => controller.triggerLightNeumorphicAnimation(fullCycle: true),
-      child: AnimatedContainer(
-          child: Icon(iconButton, size: iconSize, color: iconcolor),
+      onTap: () => _controller.triggerColorNeumorphicAnimation(fullCycle: true),
+      child: Obx(
+        () => AnimatedContainer(
+          child: ScaleTransition(
+            scale: _controller.scaleAnimation,
+            child: Icon(iconButton, size: iconSize, color: iconcolor),
+          ),
           duration: Duration(milliseconds: milliseconds),
           width: width,
           height: height,
           decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Colors.deepPurple.shade200,
+                  Colors.deepPurple.shade400,
+                ],
+                stops: [0.1, 0.9],
+              ),
               color: buttonAndBackgroundColor,
               borderRadius: BorderRadius.circular(100),
-              boxShadow: controller.neumorphicLightIsElevatedObs.value
+              boxShadow: _controller.neumorphicColorIsElevatedObs.value
                   ? [
                       _upButtonShadowColor(upButtonShadowColor),
                       _downButtonShadowColor(downButtonShadowColor)
                     ]
-                  : null)),
+                  : null),
+        ),
+      ),
     );
   }
 

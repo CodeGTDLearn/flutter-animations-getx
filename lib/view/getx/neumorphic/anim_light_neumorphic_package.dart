@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/state_manager.dart';
 
-import 'controller_getx.dart';
+import '../controller.dart';
 
 class AnimLightNeumorphicPackage extends StatelessWidget {
-  final _controller = Get.put(ControllerGetx());
+  final _controller = Get.put(Controller());
   final String? title;
 
   AnimLightNeumorphicPackage({required this.title});
