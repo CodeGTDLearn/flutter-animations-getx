@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animations_getx/core/custom_tab_bar.dart';
 
 import 'controller_animations.dart';
-import 'stateless_getx/anim_color1_neumorphic.dart';
+import 'stateless_getx/anim_color_neumorphic.dart';
 import 'stateless_getx/anim_color_grad_neumorphic.dart';
 import 'stateless_getx/anim_container.dart';
 import 'stateless_getx/anim_container_shadow1.dart';
@@ -10,6 +10,7 @@ import 'stateless_getx/anim_container_shadow2.dart';
 import 'stateless_getx/anim_container_transf.dart';
 import 'stateless_getx/anim_crossfade.dart';
 import 'stateless_getx/anim_dark_neumorphic.dart';
+import 'stateless_getx/anim_glass.dart';
 import 'stateless_getx/anim_light_neumorphic_package.dart';
 import 'stateless_getx/anim_light_neumorphic.dart';
 import 'stateless_getx/anim_opacity.dart';
@@ -35,6 +36,7 @@ class BuiltInAnimations extends StatelessWidget {
     var _neuf3 = 'Neum Dark';
     var _neuf4 = 'Neum Color1';
     var _neuf5 = 'Neum ColorGrad';
+    var _glass = 'Glass';
     var _title = 'BuiltIn Animations:';
 
     return CustomTabBar(
@@ -51,8 +53,9 @@ class BuiltInAnimations extends StatelessWidget {
         AnimLightNeumorphicPackage(title: _neuf1),
         AnimLightNeumorphic(title: _neuf2),
         AnimDarkNeumorphic(title: _neuf3),
-        AnimColor1Neumorphic(title: _neuf4),
+        AnimColorNeumorphic(title: _neuf4),
         AnimColorGradNeumorphic(title: _neuf5),
+        AnimGlass(title: _glass),
       ],
       listTabBar: [
         Tab(icon: const Icon(Icons.add_moderator), text: _controllers),
@@ -65,9 +68,10 @@ class BuiltInAnimations extends StatelessWidget {
         Tab(icon: const Icon(Icons.threed_rotation), text: _position),
         Tab(icon: const Icon(Icons.info), text: _neuf1),
         Tab(icon: const Icon(Icons.accessible_sharp), text: _neuf2),
-        Tab(icon: const Icon(Icons.accessible_sharp), text: _neuf3),
-        Tab(icon: const Icon(Icons.accessible_sharp), text: _neuf4),
-        Tab(icon: const Icon(Icons.accessible_sharp), text: _neuf5),
+        Tab(icon: const Icon(Icons.delete), text: _neuf3),
+        Tab(icon: const Icon(Icons.code), text: _neuf4),
+        Tab(icon: const Icon(Icons.expand), text: _neuf5),
+        Tab(icon: const Icon(Icons.map), text: _glass),
       ],
     );
   }

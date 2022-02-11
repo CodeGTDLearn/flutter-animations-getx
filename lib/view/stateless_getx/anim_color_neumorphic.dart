@@ -4,11 +4,11 @@ import 'package:get/state_manager.dart';
 
 import 'controller_getx.dart';
 
-class AnimColor1Neumorphic extends StatelessWidget {
+class AnimColorNeumorphic extends StatelessWidget {
   final _controller = Get.put(ControllerGetx());
   final String? title;
 
-  AnimColor1Neumorphic({required this.title});
+  AnimColorNeumorphic({required this.title});
 
   @override
   Widget build(BuildContext context) {

@@ -28,6 +28,8 @@ class ControllerGetx extends GetxController {
   var neumorphicDarkIsElevatedObs = true.obs;
   var neumorphicColorIsElevatedObs = true.obs;
 
+  var glassIsBlueObs = true.obs;
+
   @override
   void onInit() {
     physicalModelElevationObs = 10.0.obs;
@@ -108,11 +110,19 @@ class ControllerGetx extends GetxController {
     }
   }
 
-  void triggerColortNeumorphicAnimation({required bool fullCycle}) async {
+  void triggerColorNeumorphicAnimation({required bool fullCycle}) async {
     neumorphicColorIsElevatedObs.value = !neumorphicColorIsElevatedObs.value;
     if (fullCycle){
       await Future.delayed(Duration(milliseconds: 500));
       neumorphicColorIsElevatedObs.value = !neumorphicColorIsElevatedObs.value;
+    }
+  }
+
+  void triggerGlassIsBlurAnimation({required bool fullCycle}) async {
+    glassIsBlueObs.value = !glassIsBlueObs.value;
+    if (fullCycle){
+      await Future.delayed(Duration(milliseconds: 500));
+      glassIsBlueObs.value = !glassIsBlueObs.value;
     }
   }
 }
