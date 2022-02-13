@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_getx/core/custom_tab_bar.dart';
 
-import 'setstate/controller_bounce.dart';
-import 'setstate/controller_fade.dart';
-import 'setstate/controller_flip.dart';
+import 'getx/builder_bounce_anim.dart';
+import 'getx/fade_anim.dart';
+import 'getx/flip_anim.dart';
 import 'setstate/controller_multiple.dart';
-import 'setstate/controller_resize.dart';
-import 'setstate/controller_size.dart';
-import 'setstate/controller_slide.dart';
+import 'getx/resize_anim.dart';
+import 'getx/size_anim.dart';
+import 'getx/slide_anim.dart';
 
 
 class ControllerAnimations extends StatelessWidget {
@@ -29,13 +29,13 @@ class ControllerAnimations extends StatelessWidget {
     return CustomTabBar(
       title: _title,
       listTabBarView: [
-        ControllerFade(title: _controlerFade),
+        FadeAnim(title: _controlerFade),
         ControllerMultiple(),
-        ControllerResize(title: _controlerResize),
-        ControllerSlide(title: _controlerSlide),
-        ControllerBounce(title: _controlerBounce),
-        ControllerFlip(title: _controlerFlip),
-        ControllerSize(title: _controlerSize),
+        ResizeAnim(title: _controlerResize),
+        SlideAnim(title: _controlerSlide),
+        BuilderBounceAnim(title: _controlerBounce),
+        FlipAnim(title: _controlerFlip),
+        SizeAnim(title: _controlerSize),
       ],
       listTabBar: [
         Tab(icon: const Icon(Icons.add_moderator), text: _controlerFade),

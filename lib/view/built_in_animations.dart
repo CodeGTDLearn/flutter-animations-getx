@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_getx/core/custom_tab_bar.dart';
-import 'package:flutter_animations_getx/view/getx/anim_container.dart';
+import 'package:flutter_animations_getx/view/getx/anim_container/anim_container.dart';
 import 'package:flutter_animations_getx/view/getx/neumorphic/anim_color_neumorphic.dart';
 
 import 'controller_animations.dart';
-import 'getx/anim_container_transf.dart';
+import 'getx/anim_container/anim_container_transf.dart';
 import 'getx/anim_crossfade.dart';
 import 'getx/anim_glass.dart';
 import 'getx/anim_opacity.dart';
@@ -12,7 +12,7 @@ import 'getx/anim_position.dart';
 import 'getx/neumorphic/anim_color_grad_neumorphic.dart';
 import 'getx/neumorphic/anim_dark_neumorphic.dart';
 import 'getx/neumorphic/anim_light_neumorphic.dart';
-import 'getx/neumorphic/anim_light_neumorphic_package.dart';
+import 'getx/neumorphic/anim_neumorphic_container.dart';
 import 'getx/shadows/anim_container_shadow1.dart';
 import 'getx/shadows/anim_container_shadow2.dart';
 
@@ -51,7 +51,7 @@ class BuiltInAnimations extends StatelessWidget {
         AnimOpacity(title: _opacity),
         AnimContainerTransf(title: _contTransf),
         AnimPosition(title: _position),
-        AnimLightNeumorphicPackage(title: _neuf1),
+        AnimNeumorphicContainer(title: _neuf1),
         AnimLightNeumorphic(title: _neuf2),
         AnimDarkNeumorphic(title: _neuf3),
         AnimColorNeumorphic(title: _neuf4),

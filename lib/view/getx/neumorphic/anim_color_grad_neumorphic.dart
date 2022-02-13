@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animations_getx/view/getx/neumorphic/controller_neuph.dart';
+import 'package:flutter_animations_getx/view/getx/neumorphic/controller_neumorphic.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/state_manager.dart';
 
@@ -47,41 +47,32 @@ class AnimColorGradNeumorphic extends StatelessWidget {
     Color iconcolor = Colors.black,
     Function? onTap,
   }) {
-    Get.create(() => ControllerNeuph());
-    final _controller = Get.find<ControllerNeuph>();
+    Get.create(() => ControllerNeumorphic());
+    final _controller = Get.find<ControllerNeumorphic>();
 
     return GestureDetector(
-      onTap: () => _controller.triggerColorNeumorphicAnimation(fullCycle: true),
-      child: Obx(
-        () => AnimatedContainer(
-          child: ScaleTransition(
-            scale: _controller.scaleAnimation,
-            child: Icon(iconButton, size: iconSize, color: iconcolor),
-          ),
-          duration: Duration(milliseconds: milliseconds),
-          width: width,
-          height: height,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  Colors.deepPurple.shade200,
-                  Colors.deepPurple.shade400,
-                ],
-                stops: [0.1, 0.9],
-              ),
-              color: buttonAndBackgroundColor,
-              borderRadius: BorderRadius.circular(100),
-              boxShadow: _controller.neumorphicColorIsElevatedObs.value
-                  ? [
-                      _upButtonShadowColor(upButtonShadowColor),
-                      _downButtonShadowColor(downButtonShadowColor)
-                    ]
-                  : null),
-        ),
-      ),
-    );
+        onTap: () => _controller.playColorNeumorphicAnim(fullCycle: true),
+        child: Obx(() => AnimatedContainer(
+            child: ScaleTransition(
+                scale: _controller.scaleAnimationIcon,
+                child: Icon(iconButton, size: iconSize, color: iconcolor)),
+            duration: Duration(milliseconds: milliseconds),
+            width: width,
+            height: height,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Colors.deepPurple.shade200, Colors.deepPurple.shade400],
+                    stops: [0.1, 0.9]),
+                color: buttonAndBackgroundColor,
+                borderRadius: BorderRadius.circular(100),
+                boxShadow: _controller.neumorpColorIsElevatedObs.value
+                    ? [
+                        _upButtonShadowColor(upButtonShadowColor),
+                        _downButtonShadowColor(downButtonShadowColor)
+                      ]
+                    : null))));
   }
 
   BoxShadow _upButtonShadowColor(Color color) {

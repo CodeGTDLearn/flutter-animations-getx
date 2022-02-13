@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/state_manager.dart';
 
-import 'controller_neuph.dart';
+import 'controller_neumorphic.dart';
 
 class AnimDarkNeumorphic extends StatelessWidget {
   final String? title;
@@ -49,40 +49,32 @@ class AnimDarkNeumorphic extends StatelessWidget {
     Color iconcolor = Colors.black,
     Function? onTap,
   }) {
-    Get.create(() => ControllerNeuph());
-    final _controller = Get.find<ControllerNeuph>();
+    Get.create(() => ControllerNeumorphic());
+    final _controller = Get.find<ControllerNeumorphic>();
 
     return GestureDetector(
-      onTap: () async {
-        _controller.triggerDarkNeumorphicAnimation(fullCycle: true);
-        Future.delayed(Duration(milliseconds: 500)).whenComplete(() {
-          if (onTap != null) onTap();
-        });
-      },
-      child: Obx(
-        () => AnimatedContainer(
+        onTap: () async {
+          _controller.playDarkNeumorphicAnim(fullCycle: true);
+          Future.delayed(Duration(milliseconds: 500)).whenComplete(() {
+            if (onTap != null) onTap();
+          });
+        },
+        child: Obx(() => AnimatedContainer(
             child: ScaleTransition(
-              scale: _controller.scaleAnimation,
-              child: Icon(
-                iconButton,
-                size: iconSize,
-                color: iconcolor,
-              ),
-            ),
+                scale: _controller.scaleAnimationIcon,
+                child: Icon(iconButton, size: iconSize, color: iconcolor)),
             duration: Duration(milliseconds: milliseconds),
             width: width,
             height: height,
             decoration: BoxDecoration(
                 color: buttonAndBackgroundColor,
                 borderRadius: BorderRadius.circular(50),
-                boxShadow: _controller.neumorphicDarkIsElevatedObs.value
+                boxShadow: _controller.neumorpDarkIsElevatedObs.value
                     ? [
                         _upButtonShadowColor(upButtonShadowColor),
                         _downButtonShadowColor(downButtonShadowColor)
                       ]
-                    : null)),
-      ),
-    );
+                    : null))));
   }
 
   BoxShadow _upButtonShadowColor(Color color) {

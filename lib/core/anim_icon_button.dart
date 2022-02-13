@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AnimatedIconButton extends StatefulWidget {
   final Function function;
 
-   const AnimatedIconButton({Key? key, required this.function}) : super(key: key);
+  const AnimatedIconButton({Key? key, required this.function}) : super(key: key);
 
   @override
   State<AnimatedIconButton> createState() => _AnimatedIconButtonState();
@@ -23,8 +23,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
   @override
   void initState() {
     super.initState();
-    _controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+    _controller = AnimationController(vsync: this, duration: Duration(milliseconds: 500));
   }
 
   @override

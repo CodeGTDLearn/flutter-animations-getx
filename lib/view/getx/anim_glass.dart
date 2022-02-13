@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/state_manager.dart';
 
-import 'controller.dart';
+import 'controller_getx_1.dart';
 
 class AnimGlass extends StatelessWidget {
-  final _controller = Get.put(Controller());
+  final _controller = Get.put(ControllerGetx1());
   final String? title;
 
   AnimGlass({required this.title});
@@ -26,7 +26,7 @@ class AnimGlass extends StatelessWidget {
           Image.network(_image, fit: BoxFit.cover, height: double.infinity),
           Center(
               child: GestureDetector(
-                  onTap: () => _controller.triggerGlassIsBlurAnimation(fullCycle: true),
+                  onTap: () => _controller.playGlassAnim(fullCycle: true),
                   child: Obx(() {
                     return _blurEffect(
                         blur: _controller.glassIsBlueObs.value ? _blur : 0.0,
